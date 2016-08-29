@@ -70,14 +70,14 @@ module.exports = (robot) ->
   ## wait until connect redis
   robot.brain.once 'loaded', ->
     run = (opts) ->
-      logger.info "checker start"
+      # logger.info "checker start"
       checker.check opts
       .then ->
-        logger.info "wait #{process.env.HUBOT_RSS_INTERVAL} seconds"
+        # logger.info "wait #{process.env.HUBOT_RSS_INTERVAL} seconds"
         setTimeout run, 1000 * process.env.HUBOT_RSS_INTERVAL
       , (err) ->
         logger.error err
-        logger.info "wait #{process.env.HUBOT_RSS_INTERVAL} seconds"
+        # logger.info "wait #{process.env.HUBOT_RSS_INTERVAL} seconds"
         setTimeout run, 1000 * process.env.HUBOT_RSS_INTERVAL
 
     run()
